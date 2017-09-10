@@ -39,7 +39,7 @@ MODULE_LICENSE("Dual BSD/GPL");
 
 static int __init hello_init(void)
 {
-	printk(KERN_EMERG "Hello, world!\n");
+	pr_emerg("Hello, world!\n");
 	return 0;
 }
 
