@@ -31,11 +31,18 @@
 
 #include <linux/init.h>
 #include <linux/module.h>
+#include <linux/printk.h>
 #include "phello.h"
 
 MODULE_AUTHOR("Serhii Popovych <serhii.popovych@globallogic.com>");
 MODULE_DESCRIPTION("Hello, world in Linux Kernel Training");
 MODULE_LICENSE("Dual BSD/GPL");
+
+static void print_goodbye(void)
+{
+	pr_emerg("Good bye!\n");
+	return;
+}
 
 static int __init hello_init(void)
 {
@@ -45,7 +52,8 @@ static int __init hello_init(void)
 
 static void __exit hello_exit(void)
 {
-	/* Do nothing here right now */
+	print_goodbye();
+	return;
 }
 
 module_init(hello_init);
