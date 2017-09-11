@@ -34,13 +34,14 @@
 #include <linux/printk.h>
 #include <linux/bug.h>
 #include <linux/moduleparam.h>
+#include <linux/types.h>
 #include "phello.h"
 
 MODULE_AUTHOR("Serhii Popovych <serhii.popovych@globallogic.com>");
 MODULE_DESCRIPTION("Hello, world in Linux Kernel Training");
 MODULE_LICENSE("Dual BSD/GPL");
 
-static unsigned int count = 1;
+static uint count = 1;
 module_param(count,uint,0);
 
 static void print_goodbye(void)
@@ -51,17 +52,19 @@ static void print_goodbye(void)
 
 static int __init hello_init(void)
 {
+	uint i;
 	WARN_ON(count == 0);
 	BUG_ON(count > 10);
 	EINVAL_ON(count == 5);
 	GET_ON(count == 2);
-	while (count--) print_hello();
+	for (i=0;i<count;i++) print_hello();
 	return 0;
 }
 
 static void __exit hello_exit(void)
 {
 	print_goodbye();
+	KMALLOC_ON(count == 3);
 	return;
 }
 
