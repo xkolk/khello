@@ -32,11 +32,16 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/printk.h>
+#include <linux/bug.h>
+#include <linux/moduleparam.h>
 #include "phello.h"
 
 MODULE_AUTHOR("Serhii Popovych <serhii.popovych@globallogic.com>");
 MODULE_DESCRIPTION("Hello, world in Linux Kernel Training");
 MODULE_LICENSE("Dual BSD/GPL");
+
+unsigned int count = 1;
+module_param(count,uint,0);
 
 static void print_goodbye(void)
 {
@@ -46,7 +51,10 @@ static void print_goodbye(void)
 
 static int __init hello_init(void)
 {
-	print_hello();
+	WARN_ON(count == 0);
+	BUG_ON(count > 10);
+	EINVAL_ON(count == 5);
+	while (count--) print_hello();
 	return 0;
 }
 
