@@ -40,9 +40,7 @@ MODULE_LICENSE("Dual BSD/GPL");
 void print_hello(void)
 {
 	pr_emerg("Hello, world!\n");
-	return;
 }
-
 EXPORT_SYMBOL(print_hello);
 
 static int __init hello_init(void)
