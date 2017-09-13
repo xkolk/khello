@@ -33,7 +33,7 @@
 #include <linux/module.h>
 #include <linux/printk.h>
 
-MODULE_AUTHOR("Serhii Popovych <serhii.popovych@globallogic.com>");
+MODULE_AUTHOR("Serhii Popovych <serhii.popovych@globallogic.com> and Sergii Kolisnyk <kolkmail@gmail.com>");
 MODULE_DESCRIPTION("Hello, world in Linux Kernel Training");
 MODULE_LICENSE("Dual BSD/GPL");
 
